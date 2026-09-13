@@ -1,0 +1,1713 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#2457b2">
+  <title>German Words — Lektion 5: Mein Tag</title>
+  <style>
+    :root {
+      --ink: #173b2c;
+      --muted: #66736b;
+      --cream: #f4f1e9;
+      --paper: #fffdf8;
+      --line: #dcd9cf;
+      --gold: #f5bb45;
+      --orange: #eb7656;
+      --mint: #cbe4d5;
+      --shadow: 0 24px 70px rgba(28, 49, 39, .13);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 14% 12%, rgba(245,187,69,.20), transparent 25rem),
+        radial-gradient(circle at 90% 85%, rgba(203,228,213,.7), transparent 32rem),
+        var(--cream);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button { font: inherit; }
+    button:focus-visible { outline: 3px solid rgba(235,118,86,.38); outline-offset: 3px; }
+    .app { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 48px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.02em; }
+    .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; color: #fff; background: var(--ink); box-shadow: 0 8px 20px rgba(23,59,44,.2); }
+    .lesson-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; }
+    .lesson-tag, .lesson-link { padding: 8px 13px; border: 1px solid rgba(23,59,44,.12); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.5); font-size: 13px; font-weight: 750; }
+    .lesson-link { color: var(--ink); text-decoration: none; transition: transform .18s ease, background .18s ease; }
+    .lesson-link:hover { transform: translateY(-1px); background: var(--paper); }
+    .hero { display: grid; grid-template-columns: minmax(0, .86fr) minmax(420px, 1.14fr); align-items: center; gap: clamp(36px, 7vw, 90px); min-height: calc(100vh - 118px); padding: 42px 0 54px; }
+    .eyebrow { margin: 0 0 18px; color: #b24b32; font-size: 12px; font-weight: 850; letter-spacing: .18em; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 620px; color: #296bb4; font-family: Georgia, "Times New Roman", serif; font-size: clamp(48px, 7vw, 88px); font-weight: 500; line-height: .94; letter-spacing: -.055em; }
+    .intro { max-width: 540px; margin: 26px 0 0; color: var(--muted); font-size: clamp(17px, 2vw, 20px); line-height: 1.65; }
+    .mini-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .stat { padding: 10px 14px; border-radius: 14px; background: rgba(255,255,255,.58); color: var(--muted); font-size: 13px; font-weight: 700; }
+    .stat strong { color: var(--ink); }
+    .sound-note { display: flex; gap: 12px; max-width: 510px; margin-top: 28px; padding: 16px 18px; border-left: 3px solid var(--gold); background: rgba(255,253,248,.64); color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .sound-note span:first-child { font-size: 20px; }
+    .study-panel { position: relative; }
+    .study-panel::before { content: ""; position: absolute; inset: 18px -14px -14px 18px; z-index: 0; border: 1px solid rgba(23,59,44,.12); border-radius: 35px; transform: rotate(2deg); }
+    .card { position: relative; z-index: 1; min-height: 530px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(23,59,44,.10); border-radius: 32px; background: var(--paper); box-shadow: var(--shadow); }
+    .card::after { content: ""; position: absolute; top: -65px; right: -54px; width: 180px; height: 180px; border-radius: 50%; background: var(--mint); opacity: .52; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 25px 28px 0; }
+    .counter { color: var(--muted); font-size: 13px; font-weight: 800; letter-spacing: .08em; }
+    .shuffle { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 7px; border: 0; border-radius: 12px; padding: 9px 12px; color: var(--ink); background: #f0eee7; cursor: pointer; font-size: 13px; font-weight: 750; }
+    .word-area { flex: 1; display: grid; place-items: center; align-content: center; padding: 32px 36px 20px; text-align: center; }
+    .type { margin-bottom: 15px; padding: 6px 10px; border-radius: 999px; color: #a0442e; background: #fbe3d9; font-size: 11px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .word { margin: 0; max-width: 100%; font-family: Georgia, "Times New Roman", serif; font-size: clamp(45px, 6vw, 67px); font-weight: 500; line-height: 1.04; letter-spacing: -.045em; overflow-wrap: anywhere; }
+    .plural { min-height: 30px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin: 11px 0 0; color: var(--muted); font-size: 14px; }
+    .plural-listen { border: 0; border-radius: 9px; padding: 6px 9px; color: var(--ink); background: var(--mint); cursor: pointer; font-size: 12px; font-weight: 750; }
+    .plural-listen[hidden] { display: none; }
+    .pronunciation { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 24px; }
+    .pron-chip { padding: 8px 11px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); background: #faf8f2; font-size: 13px; }
+    .listen { display: inline-flex; align-items: center; gap: 9px; margin-top: 20px; border: 0; border-radius: 14px; padding: 13px 17px; color: #fff; background: var(--ink); cursor: pointer; box-shadow: 0 10px 22px rgba(23,59,44,.18); font-weight: 800; }
+    .listen.speaking { animation: pulse 1s ease-in-out infinite; }
+    @keyframes pulse { 50% { transform: scale(1.035); box-shadow: 0 0 0 8px rgba(23,59,44,.08); } }
+    .answer { width: calc(100% - 56px); min-height: 110px; margin: 0 28px 22px; padding: 19px 22px; border: 1px dashed #c9c5ba; border-radius: 18px; background: #f8f5ee; text-align: left; }
+    .answer.hidden { display: grid; place-items: center; cursor: pointer; color: var(--muted); font-weight: 750; text-align: center; }
+    .answer.hidden:hover { border-color: var(--orange); color: var(--ink); }
+    .meaning { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 25px; }
+    .example { margin: 9px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .example-listen { display: inline-flex; align-items: center; gap: 7px; margin-top: 13px; border: 0; border-radius: 10px; padding: 8px 11px; color: var(--ink); background: var(--mint); cursor: pointer; font-size: 12px; font-weight: 800; }
+    .card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 28px 28px; }
+    .grade { min-height: 50px; border: 0; border-radius: 15px; cursor: pointer; font-weight: 850; }
+    .review { color: #8a3b29; background: #f9ded4; }
+    .know { color: var(--ink); background: var(--gold); }
+    .progress-wrap { margin-top: 22px; }
+    .progress-label { display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--muted); font-size: 12px; font-weight: 750; }
+    .progress-track { height: 8px; overflow: hidden; border-radius: 99px; background: rgba(23,59,44,.12); }
+    .progress-fill { height: 100%; width: 0; border-radius: inherit; background: var(--orange); transition: width .35s ease; }
+    .keys { margin-top: 14px; color: #879087; font-size: 11px; text-align: center; }
+    kbd { padding: 2px 6px; border: 1px solid #d7d3c9; border-bottom-width: 2px; border-radius: 5px; background: #fff; font-family: inherit; }
+    .reset { display: block; margin: 12px auto 0; border: 0; padding: 4px 8px; color: var(--muted); background: transparent; cursor: pointer; font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
+    .section { padding: 92px 0 34px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 30px; }
+    .section-kicker { margin: 0 0 10px; color: #b24b32; font-size: 12px; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
+    .section-title { margin: 0; max-width: 700px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(38px, 5vw, 58px); font-weight: 500; line-height: 1; letter-spacing: -.04em; }
+    .section-copy { max-width: 420px; margin: 0; color: var(--muted); line-height: 1.65; }
+    .quiz-card { display: grid; grid-template-columns: minmax(260px, .9fr) minmax(320px, 1.1fr); gap: 24px; padding: clamp(24px, 4vw, 48px); border-radius: 30px; color: #f8f5ee; background: var(--ink); box-shadow: var(--shadow); }
+    .quiz-prompt { display: flex; flex-direction: column; align-items: start; justify-content: center; min-height: 320px; padding: 8px 12px; }
+    .quiz-meta { color: #a8c5b5; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .quiz-word { margin: 22px 0 10px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(42px, 6vw, 66px); font-weight: 500; line-height: 1; letter-spacing: -.04em; }
+    .quiz-instruction { margin: 8px 0 22px; color: #bfd2c7; line-height: 1.6; }
+    .quiz-listen { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,.18); border-radius: 13px; padding: 11px 14px; color: #fff; background: rgba(255,255,255,.08); cursor: pointer; font-weight: 750; }
+    .quiz-side { display: flex; flex-direction: column; justify-content: center; padding: 22px; border-radius: 22px; color: var(--ink); background: var(--paper); }
+    .quiz-score { margin: 0 0 14px; color: var(--muted); font-size: 12px; font-weight: 800; }
+    .quiz-options { display: grid; gap: 10px; }
+    .quiz-option { min-height: 54px; border: 1px solid var(--line); border-radius: 14px; padding: 13px 16px; color: var(--ink); background: #fff; cursor: pointer; font-weight: 750; text-align: left; }
+    .quiz-option:hover:not(:disabled) { border-color: var(--orange); transform: translateY(-1px); }
+    .quiz-option.correct { border-color: #69a781; background: #dff0e5; }
+    .quiz-option.wrong { border-color: #d7775f; background: #f8ddd5; }
+    .quiz-option:disabled { cursor: default; }
+    .quiz-feedback { min-height: 24px; margin: 14px 0 8px; color: var(--muted); font-size: 13px; font-weight: 750; }
+    .next-quiz { align-self: start; border: 0; border-radius: 13px; padding: 12px 16px; color: var(--ink); background: var(--gold); cursor: pointer; font-weight: 850; }
+    .next-quiz[hidden] { display: none; }
+    .sentence-card { display: grid; grid-template-columns: minmax(230px, .75fr) minmax(0, 1.25fr); gap: clamp(22px, 5vw, 58px); align-items: center; min-height: 360px; padding: clamp(25px, 5vw, 54px); border: 1px solid rgba(23,59,44,.1); border-radius: 30px; background: var(--paper); box-shadow: var(--shadow); }
+    .sentence-meta { color: #b24b32; font-size: 12px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .sentence-word { margin: 18px 0 8px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(38px, 5vw, 58px); font-weight: 500; line-height: 1; letter-spacing: -.04em; }
+    .sentence-help { margin: 0; color: var(--muted); line-height: 1.55; }
+    .sentence-prompt { padding: 24px; border-radius: 22px; background: #f5f1e8; }
+    .sentence-label { margin: 0 0 8px; color: var(--muted); font-size: 11px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .sentence-english { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(23px, 3vw, 32px); line-height: 1.25; }
+    .sentence-score { margin: 10px 0 0; color: var(--muted); font-size: 12px; font-weight: 750; }
+    .sentence-answer { min-height: 78px; display: flex; flex-wrap: wrap; align-content: center; gap: 8px; margin: 20px 0 0; padding: 13px; border: 2px dashed #c9c5ba; border-radius: 16px; background: #fff; }
+    .sentence-answer.correct { border-color: #69a781; background: #e8f5ec; }
+    .sentence-answer.wrong { border-color: #d7775f; background: #fff1ec; }
+    .sentence-placeholder { align-self: center; width: 100%; color: #909991; font-size: 13px; text-align: center; }
+    .sentence-tiles { min-height: 68px; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 8px; margin-top: 14px; }
+    .word-tile { min-height: 40px; border: 1px solid #d5d1c7; border-bottom-width: 3px; border-radius: 11px; padding: 7px 12px; color: var(--ink); background: #fff; cursor: pointer; font-weight: 800; }
+    .word-tile:hover:not(:disabled) { border-color: var(--orange); transform: translateY(-1px); }
+    .word-tile:disabled { cursor: default; opacity: .8; }
+    .sentence-feedback { min-height: 22px; margin: 13px 0 0; color: var(--muted); font-size: 13px; font-weight: 800; }
+    .sentence-feedback.correct { color: #32734c; }
+    .sentence-feedback.wrong { color: #a0442e; }
+    .sentence-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .sentence-action { min-height: 44px; border: 0; border-radius: 12px; padding: 10px 14px; cursor: pointer; font-weight: 800; }
+    .sentence-action.secondary { color: var(--ink); background: var(--mint); }
+    .sentence-action.primary { color: var(--ink); background: var(--gold); }
+    .sentence-action.ghost { border: 1px solid var(--line); color: var(--muted); background: #fff; }
+    .bank { padding-bottom: 80px; }
+    .bank-tools { display: flex; gap: 10px; margin: -10px 0 22px; }
+    .bank-search, .bank-filter { min-height: 48px; border: 1px solid var(--line); border-radius: 14px; color: var(--ink); background: rgba(255,253,248,.88); font: inherit; }
+    .bank-search { flex: 1; min-width: 0; padding: 0 16px; }
+    .bank-filter { padding: 0 38px 0 14px; cursor: pointer; }
+    .bank-search:focus, .bank-filter:focus { outline: 3px solid rgba(235,118,86,.25); border-color: var(--orange); }
+    .bank-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .bank-card { display: grid; grid-template-columns: 36px minmax(0, 1fr) 42px; align-items: center; gap: 12px; min-height: 108px; padding: 16px; border: 1px solid rgba(23,59,44,.1); border-radius: 18px; background: rgba(255,253,248,.78); }
+    .bank-number { align-self: start; color: #a3aaa5; font-size: 11px; font-weight: 850; letter-spacing: .08em; }
+    .bank-word { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 22px; line-height: 1.1; }
+    .bank-meaning { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.4; }
+    .bank-plural-row { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 5px; }
+    .bank-plural { color: #a0442e; font-size: 11px; font-weight: 750; }
+    .bank-plural-listen { border: 0; border-radius: 8px; padding: 5px 8px; color: var(--ink); background: var(--gold); cursor: pointer; font-size: 10px; font-weight: 850; white-space: nowrap; }
+    .bank-ipa { display: block; margin-top: 5px; color: #8a928d; font-size: 11px; }
+    .bank-listen { width: 40px; height: 40px; display: grid; place-items: center; border: 0; border-radius: 12px; color: var(--ink); background: var(--mint); cursor: pointer; }
+    .bank-empty { grid-column: 1 / -1; padding: 34px; border: 1px dashed var(--line); border-radius: 18px; color: var(--muted); text-align: center; }
+    .footer { padding: 24px 0 10px; border-top: 1px solid rgba(23,59,44,.1); color: var(--muted); font-size: 12px; text-align: center; }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 54px; }
+      .hero-copy { text-align: center; }
+      .intro, .sound-note { margin-left: auto; margin-right: auto; }
+      .mini-stats { justify-content: center; }
+      .study-panel { width: min(590px, 100%); margin: 0 auto; }
+      .section-head { align-items: start; flex-direction: column; }
+      .quiz-card { grid-template-columns: 1fr; }
+      .quiz-prompt { min-height: 250px; }
+      .sentence-card { grid-template-columns: 1fr; }
+      .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px) {
+      .app { width: min(100% - 20px, 1120px); padding-top: 14px; }
+      .brand span:last-child { display: none; }
+      .hero { gap: 32px; padding-top: 36px; }
+      h1 { font-size: 50px; }
+      .intro { font-size: 16px; }
+      .sound-note { text-align: left; }
+      .card { min-height: 510px; border-radius: 25px; }
+      .card-top { padding: 20px 20px 0; }
+      .word-area { padding: 28px 20px 18px; }
+      .word { font-size: 47px; }
+      .answer { width: calc(100% - 40px); margin: 0 20px 16px; }
+      .card-actions { padding: 0 20px 20px; }
+      .keys { display: none; }
+      .section { padding-top: 68px; }
+      .quiz-card { padding: 16px; border-radius: 24px; }
+      .quiz-prompt { min-height: 220px; padding: 18px 12px; }
+      .quiz-side { padding: 16px; }
+      .bank-grid { grid-template-columns: 1fr; }
+      .bank-tools { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* Lektion 3: warm food-market theme */
+    :root {
+      --ink: #2b1736;
+      --muted: #756779;
+      --cream: #fff4e9;
+      --paper: #fffaf4;
+      --line: #ead4c7;
+      --gold: #f7b84b;
+      --orange: #e76658;
+      --mint: #a8d8c1;
+      --berry: #4c214f;
+      --berry-dark: #2b1736;
+      --coral: #f28b74;
+      --shadow: 0 28px 78px rgba(67, 34, 61, .16);
+    }
+    body {
+      background:
+        radial-gradient(circle at 8% 8%, rgba(247,184,75,.32), transparent 24rem),
+        radial-gradient(circle at 95% 48%, rgba(242,139,116,.22), transparent 30rem),
+        linear-gradient(180deg, #fff8f0 0%, #fdf1e6 55%, #f7eadf 100%);
+    }
+    .app { width: min(1180px, calc(100% - 32px)); }
+    .brand-mark { border-radius: 50%; color: var(--berry-dark); background: var(--gold); box-shadow: 0 8px 22px rgba(247,184,75,.34); }
+    .lesson-tag, .lesson-link { border-color: rgba(76,33,79,.15); background: rgba(255,250,244,.78); }
+    .hero {
+      position: relative;
+      min-height: auto;
+      margin-top: 24px;
+      padding: clamp(34px, 5vw, 62px);
+      overflow: hidden;
+      border-radius: 42px;
+      color: #fff9f4;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(247,184,75,.28), transparent 18rem),
+        radial-gradient(circle at 88% 82%, rgba(242,139,116,.26), transparent 24rem),
+        linear-gradient(135deg, var(--berry-dark), var(--berry));
+      box-shadow: 0 35px 90px rgba(43,23,54,.24);
+    }
+    .hero::before { content: "Essen & Trinken"; position: absolute; right: -22px; bottom: 10px; color: rgba(255,255,255,.045); font-family: Georgia, serif; font-size: clamp(70px, 12vw, 160px); white-space: nowrap; }
+    .hero-copy, .study-panel { position: relative; z-index: 1; }
+    .hero .eyebrow { color: var(--gold); }
+    .hero .intro { color: rgba(255,249,244,.76); }
+    .hero .stat { color: rgba(255,249,244,.72); background: rgba(255,255,255,.09); }
+    .hero .stat strong { color: #fff; }
+    .hero .sound-note { border-left-color: var(--gold); color: rgba(255,249,244,.76); background: rgba(255,255,255,.075); }
+    .study-panel::before { border-color: rgba(255,255,255,.25); }
+    .card { border: 0; background: #fffaf4; box-shadow: 0 25px 70px rgba(15,7,18,.35); }
+    .card::after { width: 220px; height: 220px; background: linear-gradient(135deg, var(--gold), var(--coral)); opacity: .19; }
+    .word-badges { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 14px; }
+    .word-badges .type { margin: 0; color: #7d2f38; background: #ffe0d5; }
+    .category-badge { padding: 6px 10px; border-radius: 999px; color: var(--berry); background: #f7e6f2; font-size: 11px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .listen { background: linear-gradient(135deg, var(--berry), var(--berry-dark)); }
+    .plural-listen, .example-listen, .bank-listen { background: #d8eee4; }
+    .answer { border-color: #dfc8bb; background: #fff3e8; }
+    .usage-label { margin: 12px 0 0; color: #9b4250; font-size: 10px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .category-section { padding-top: 74px; }
+    .category-pills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .category-pill { min-height: 116px; display: grid; grid-template-columns: 42px 1fr; align-items: center; gap: 12px; border: 1px solid rgba(76,33,79,.12); border-radius: 22px; padding: 17px; color: var(--ink); background: rgba(255,250,244,.78); cursor: pointer; text-align: left; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .category-pill:hover { transform: translateY(-3px); border-color: var(--coral); }
+    .category-pill.active { border-color: transparent; color: #fff; background: linear-gradient(135deg, var(--berry), #733665); box-shadow: 0 16px 34px rgba(76,33,79,.2); }
+    .category-icon { font-size: 28px; }
+    .category-label { display: block; font-family: Georgia, serif; font-size: 19px; font-weight: 700; }
+    .category-total { display: block; margin-top: 5px; opacity: .68; font-size: 11px; font-weight: 800; }
+    .category-focus { display: grid; grid-template-columns: 60px 1fr auto; align-items: center; gap: 18px; margin-top: 18px; padding: 20px 22px; border-radius: 22px; color: #fff; background: linear-gradient(110deg, #e86759, #f19073); box-shadow: 0 18px 40px rgba(231,103,89,.2); }
+    .category-focus-icon { font-size: 38px; }
+    .category-focus-label { display: block; font-family: Georgia, serif; font-size: 24px; }
+    .category-focus-copy { margin: 4px 0 0; color: rgba(255,255,255,.82); font-size: 13px; }
+    .category-reset { border: 1px solid rgba(255,255,255,.4); border-radius: 13px; padding: 11px 14px; color: #fff; background: rgba(255,255,255,.12); cursor: pointer; font-weight: 850; }
+    .quiz-card { background: linear-gradient(140deg, #3d1c46, #672c5c); }
+    .quiz-meta, .quiz-instruction { color: #e2cfe1; }
+    .sentence-card { border: 0; background: linear-gradient(135deg, #fffaf4 0%, #ffe9dc 100%); }
+    .sentence-prompt { background: rgba(255,255,255,.7); }
+    .section-kicker, .sentence-meta { color: #a84451; }
+    .bank-tools { flex-wrap: wrap; }
+    .bank-category { min-height: 48px; border: 1px solid var(--line); border-radius: 14px; padding: 0 38px 0 14px; color: var(--ink); background: rgba(255,250,244,.92); font: inherit; cursor: pointer; }
+    .bank-card { border-color: rgba(76,33,79,.1); background: rgba(255,250,244,.88); }
+    .bank-category-label { display: inline-block; margin-top: 7px; padding: 4px 7px; border-radius: 7px; color: #7f3850; background: #f7e6ef; font-size: 9px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .bank-plural-listen { background: var(--gold); }
+    .footer { border-color: rgba(76,33,79,.12); }
+    @media (max-width: 900px) { .category-pills { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px) {
+      .hero { margin-top: 16px; padding: 30px 18px; border-radius: 28px; }
+      .lesson-actions { gap: 5px; }
+      .lesson-link, .lesson-tag { padding: 7px 9px; font-size: 11px; }
+      .category-pills { grid-template-columns: 1fr; }
+      .category-pill { min-height: 88px; }
+      .category-focus { grid-template-columns: 46px 1fr; }
+      .category-reset { grid-column: 1 / -1; }
+      .bank-category { width: 100%; }
+    }
+
+
+    /* Lektion 5: time-and-calendar theme */
+    :root {
+      --ink: #172554;
+      --muted: #5e6d8a;
+      --cream: #f5f8ff;
+      --paper: #ffffff;
+      --line: #d7e1f2;
+      --gold: #f7bd45;
+      --orange: #ff8066;
+      --mint: #c8f1ec;
+      --berry: #2457b2;
+      --berry-dark: #172554;
+      --coral: #ff8066;
+      --shadow: 0 28px 78px rgba(23, 37, 84, .17);
+    }
+    body {
+      background-color: #f5f8ff;
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(85, 181, 223, .26), transparent 27rem),
+        radial-gradient(circle at 88% 16%, rgba(247, 189, 69, .22), transparent 23rem),
+        linear-gradient(rgba(36, 87, 178, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(36, 87, 178, .045) 1px, transparent 1px);
+      background-size: auto, auto, 32px 32px, 32px 32px;
+    }
+    .brand-mark { border-radius: 50%; color: #fff; background: linear-gradient(145deg, #318ac8, #2457b2); box-shadow: 0 10px 24px rgba(36,87,178,.25); }
+    .lesson-tag, .lesson-link { border-color: rgba(23,37,84,.16); background: rgba(255,255,255,.88); }
+    .hero { min-height: auto; margin-top: 22px; padding: clamp(30px, 5vw, 58px); border: 1px solid rgba(23,37,84,.10); border-radius: 28px; background: linear-gradient(135deg, rgba(255,255,255,.97), rgba(229,241,255,.96)); box-shadow: 0 34px 92px rgba(23,37,84,.15); }
+    .hero::before { content: "MEIN TAG"; right: -8px; bottom: -10px; color: rgba(36,87,178,.045); font-family: Inter, sans-serif; font-size: clamp(72px, 12vw, 154px); font-weight: 950; letter-spacing: -.07em; }
+    .hero h1 { color: #2457b2; }
+    .hero h1 span { color: #172554; font-size: .37em; letter-spacing: .08em; text-transform: uppercase; }
+    .hero .eyebrow, .section-kicker, .sentence-meta { color: #318ac8; }
+    .hero .intro { color: var(--muted); }
+    .hero .stat { color: #5e6d8a; background: rgba(255,255,255,.82); }
+    .hero .stat strong { color: var(--ink); }
+    .hero .sound-note { margin-top: 20px; border-left-color: var(--gold); color: #52627e; background: rgba(255,255,255,.76); }
+    .day-visual { display: grid; grid-template-columns: 128px 1fr; gap: 18px; align-items: center; margin-top: 24px; padding: 18px; border: 1px solid rgba(36,87,178,.13); border-radius: 20px; background: rgba(255,255,255,.74); box-shadow: 0 17px 40px rgba(23,37,84,.10); }
+    .clock-face { position: relative; width: 112px; aspect-ratio: 1; border: 9px solid #fff; border-radius: 50%; background: #eaf5ff; box-shadow: inset 0 0 0 1px #b9d5ed, 0 10px 24px rgba(23,37,84,.14); }
+    .clock-face::before, .clock-face::after { content: ""; position: absolute; left: 50%; bottom: 50%; width: 4px; border-radius: 4px; background: #2457b2; transform-origin: 50% 100%; }
+    .clock-face::before { height: 32px; transform: translateX(-50%) rotate(0deg); }
+    .clock-face::after { height: 41px; transform: translateX(-50%) rotate(105deg); background: #ff8066; }
+    .clock-dot { position: absolute; left: 50%; top: 50%; z-index: 2; width: 11px; height: 11px; border-radius: 50%; background: #172554; transform: translate(-50%, -50%); }
+    .day-lines { display: grid; gap: 9px; }
+    .day-line { display: grid; grid-template-columns: 42px 1fr; gap: 10px; align-items: center; color: #4e607e; font-size: 12px; font-weight: 800; }
+    .day-line i { display: block; height: 8px; border-radius: 99px; background: linear-gradient(90deg, #318ac8, #72c9dc); }
+    .day-line:nth-child(2) i { width: 78%; background: linear-gradient(90deg, #f7bd45, #ff8066); }
+    .day-line:nth-child(3) i { width: 91%; background: linear-gradient(90deg, #54baa9, #318ac8); }
+    .study-panel::before { inset: 16px -11px -11px 16px; border-color: rgba(36,87,178,.20); border-radius: 24px; transform: none; }
+    .card { min-height: 548px; border: 1px solid rgba(23,37,84,.10); border-radius: 24px; background: #fff; box-shadow: 0 24px 70px rgba(23,37,84,.19); }
+    .card::after { border-radius: 19px; background: linear-gradient(145deg, #72c9dc, #f7bd45); opacity: .19; }
+    .word-badges .type { color: #2457b2; background: #e1edff; }
+    .category-badge { color: #8a5200; background: #fff0c9; }
+    .listen { background: linear-gradient(135deg, #318ac8, #2457b2); }
+    .plural-listen, .example-listen, .bank-listen { background: #d9f4f0; }
+    .answer { border-color: #cbd9ed; background: #f5f8ff; }
+    .usage-label { color: #2457b2; }
+    .category-pill { border-radius: 18px; border-color: rgba(23,37,84,.12); background: rgba(255,255,255,.9); }
+    .category-pill:hover { border-color: #5cadd7; }
+    .category-pill.active { background: linear-gradient(135deg, #318ac8, #2457b2); box-shadow: 0 16px 36px rgba(36,87,178,.22); }
+    .category-focus { border-radius: 18px; background: linear-gradient(110deg, #ff8066, #f7bd45); box-shadow: 0 18px 40px rgba(255,128,102,.22); }
+    .quiz-card { border-radius: 24px; background: linear-gradient(145deg, #172554, #2457b2); }
+    .quiz-meta, .quiz-instruction { color: #d8e6ff; }
+    .sentence-card { border-radius: 24px; background: linear-gradient(135deg, #ffffff, #eaf5ff); }
+    .sentence-prompt { background: rgba(255,255,255,.84); }
+    .bank-card { border-radius: 16px; border-color: rgba(23,37,84,.10); background: rgba(255,255,255,.92); }
+    .bank-category-label { color: #2457b2; background: #e5efff; }
+    .bank-plural-listen { background: var(--gold); }
+    .footer { border-color: rgba(23,37,84,.14); }
+    @media (max-width: 520px) { .hero { margin-top: 14px; padding: 26px 17px; border-radius: 20px; } .day-visual { grid-template-columns: 88px 1fr; } .clock-face { width: 78px; border-width: 6px; } .clock-face::before { height: 23px; } .clock-face::after { height: 29px; } .card { border-radius: 18px; } }
+
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">DE</span><span>Wort für Wort</span></div>
+      <div class="lesson-actions"><a class="lesson-link" href="german-lesson-1.html" target="_top">Lektion 1</a><a class="lesson-link" href="german-lesson-2.html" target="_top">Lektion 2</a><a class="lesson-link" href="german-lesson-3.html" target="_top">Lektion 3</a><a class="lesson-link" href="german-lesson-4.html" target="_top">← Lektion 4</a><div class="lesson-tag">Lektion 5 · 86 Wörter · A1</div></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">German vocabulary trainer</p>
+        <h1><span>Lektion 5</span><br>Mein Tag.</h1>
+        <p class="intro">Study 86 words for routines, clock times, weekdays, appointments, and free time—with pronunciation, plurals, and practical sentences.</p>
+        <div class="mini-stats" aria-label="Lesson statistics">
+          <span class="stat"><strong>86</strong> words</span>
+          <span class="stat"><strong id="learnedStat">0</strong> learned</span>
+          <span class="stat"><strong id="reviewStat">0</strong> to review</span>
+        </div>
+        <div class="day-visual" aria-label="A simple daily schedule showing morning, afternoon, and evening">
+          <div class="clock-face" aria-hidden="true"><span class="clock-dot"></span></div>
+          <div class="day-lines"><div class="day-line"><span>08:00</span><i></i></div><div class="day-line"><span>13:30</span><i></i></div><div class="day-line"><span>19:00</span><i></i></div></div>
+        </div>
+        <div class="sound-note"><span aria-hidden="true">💡</span><span><strong>Time tip:</strong> Use <em>um</em> for clock times and <em>am</em> for weekdays. Learn each noun with its article and plural.</span></div>
+      </div>
+      <div class="study-panel">
+        <article class="card" aria-live="polite">
+          <div class="card-top"><span class="counter" id="counter">WORD 001 / 86</span><button class="shuffle" id="shuffleBtn" type="button" aria-label="Shuffle words"><span aria-hidden="true">↝</span> Shuffle</button></div>
+          <div class="word-area">
+            <div class="word-badges"><span class="type" id="wordType">Other</span><span class="category-badge" id="wordCategory">🕘 Time & clock</span></div>
+            <h2 class="word" id="word" lang="de">bis</h2>
+            <p class="plural"><span id="pluralText" lang="de"></span><button class="plural-listen" id="pluralListenBtn" type="button" hidden><span aria-hidden="true">🔊</span> Hear plural</button></p>
+            <div class="pronunciation"><span class="pron-chip" id="ipa">/bɪs/</span><span class="pron-chip" id="sound">biss</span></div>
+            <button class="listen" id="listenBtn" type="button"><span aria-hidden="true">🔊</span><span>Listen in German</span></button>
+          </div>
+          <button class="answer hidden" id="answerReveal" type="button" aria-expanded="false" aria-controls="answer">Tap to reveal the meaning and sentence</button>
+          <div class="answer" id="answer" hidden></div>
+          <div class="card-actions"><button class="grade review" id="reviewBtn" type="button">Review again</button><button class="grade know" id="knowBtn" type="button">I know this</button></div>
+        </article>
+        <div class="progress-wrap"><div class="progress-label"><span>Lesson progress</span><span id="progressText">0 of 86 checked</span></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
+        <p class="keys"><kbd>Space</kbd> reveal · <kbd>←</kbd> previous · <kbd>→</kbd> next</p>
+        <button class="reset" id="resetBtn" type="button">Reset saved progress</button>
+      </div>
+    </section>
+
+
+    <section class="section category-section" id="categories">
+      <div class="section-head"><div><p class="section-kicker">Plan your study round</p><h2 class="section-title">Choose one part of the day.</h2></div><p class="section-copy">One category choice updates the flashcards, quiz, sentence builder, and word bank together.</p></div>
+      <div class="category-pills" id="categoryPills" aria-label="Vocabulary categories"></div>
+      <div class="category-focus" aria-live="polite"><span class="category-focus-icon" id="categoryFocusIcon" aria-hidden="true">✦</span><div><strong class="category-focus-label" id="categoryFocusLabel">All words · 86 words</strong><p class="category-focus-copy" id="categoryFocusCopy">Study the complete Lektion 5 vocabulary list.</p></div><button class="category-reset" id="categoryReset" type="button" hidden>Show all words</button></div>
+    </section>
+
+    <section class="section" id="quiz">
+      <div class="section-head">
+        <div><p class="section-kicker">Quick check</p><h2 class="section-title">Can you remember the meaning?</h2></div>
+        <p class="section-copy">Choose the English meaning. Use the speaker whenever you want to hear the German word again.</p>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-prompt">
+          <span class="quiz-meta">What does this mean?</span>
+          <h3 class="quiz-word" id="quizWord" lang="de">bis</h3>
+          <p class="quiz-instruction" id="quizPronunciation">/bɪs/</p>
+          <button class="quiz-listen" id="quizListenBtn" type="button"><span aria-hidden="true">🔊</span> Hear the word</button>
+        </div>
+        <div class="quiz-side">
+          <p class="quiz-score" id="quizScore">0 correct · 0 tried</p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <p class="quiz-feedback" id="quizFeedback" role="status"></p>
+          <button class="next-quiz" id="nextQuizBtn" type="button" hidden>Next word →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sentences">
+      <div class="section-head">
+        <div><p class="section-kicker">Sentence builder</p><h2 class="section-title">Build the sentence. Use the word naturally.</h2></div>
+        <p class="section-copy">Every word includes a practical A1 sentence about daily life. Read the English hint, build the German sentence, check it, and hear it aloud.</p>
+      </div>
+      <article class="sentence-card">
+        <div>
+          <span class="sentence-meta" id="sentenceMeta">Sentence 001 / 86</span>
+          <h3 class="sentence-word" id="sentenceWord" lang="de">bis</h3>
+          <p class="sentence-help">Tap the word tiles in the correct order, then check your answer.</p>
+          <p class="sentence-score" id="sentenceScore">0 correct · 0 tried</p>
+        </div>
+        <div class="sentence-prompt">
+          <p class="sentence-label">English hint</p>
+          <p class="sentence-english" id="sentenceEnglish">I work until five o’clock.</p>
+          <div class="sentence-answer" id="sentenceAnswer" lang="de" aria-label="Your German sentence"><span class="sentence-placeholder">Your sentence will appear here</span></div>
+          <div class="sentence-tiles" id="sentenceTiles" lang="de" aria-label="Available German words"></div>
+          <p class="sentence-feedback" id="sentenceFeedback" role="status"></p>
+          <div class="sentence-actions">
+            <button class="sentence-action secondary" id="sentenceListenBtn" type="button"><span aria-hidden="true">🔊</span> Hear sentence</button>
+            <button class="sentence-action ghost" id="sentenceClearBtn" type="button">Clear</button>
+            <button class="sentence-action ghost" id="sentenceShowBtn" type="button">Show answer</button>
+            <button class="sentence-action primary" id="sentenceCheckBtn" type="button">Check answer</button>
+            <button class="sentence-action primary" id="sentenceNextBtn" type="button" hidden>Next sentence →</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section bank">
+      <div class="section-head">
+        <div><p class="section-kicker">Word bank</p><h2 class="section-title">All 86 words at a glance.</h2></div>
+        <p class="section-copy">The article is part of every German noun—learn it together with the word.</p>
+      </div>
+      <div class="bank-tools" role="search">
+        <input class="bank-search" id="bankSearch" type="search" placeholder="Search German or English…" aria-label="Search the word bank">
+        <select class="bank-category" id="bankCategory" aria-label="Filter words by category"><option value="all">All categories</option><option value="routine">☀️ Daily routines</option><option value="time">🕘 Time & clock</option><option value="weekdays">📅 Weekdays</option><option value="appointments">🗓️ Appointments</option><option value="leisure">⚽ Free time</option><option value="public">🏛️ Places & notices</option><option value="useful">💬 Useful words</option></select><select class="bank-filter" id="bankFilter" aria-label="Filter words by type">
+          <option value="all">All word types</option>
+          <option value="noun">Nouns</option>
+          <option value="verb">Verbs</option>
+          <option value="other">Other words & phrases</option>
+        </select>
+      </div>
+      <div class="bank-grid" id="bankGrid"></div>
+    </section>
+    <footer class="footer">Lektion 5 · Mein Tag · 86 words · Developed by Chan</footer>
+  </main>
+
+  <script>
+(function lessonRuntime() {
+  const words = [
+  {
+    "word": "bis",
+    "type": "other",
+    "category": "time",
+    "meaning": "until / up to",
+    "ipa": "/bɪs/",
+    "sound": "biss",
+    "example": "Ich arbeite bis fünf Uhr. — I work until five o’clock."
+  },
+  {
+    "word": "machen",
+    "type": "verb",
+    "category": "routine",
+    "meaning": "to do / make",
+    "ipa": "/ˈmaxn̩/",
+    "sound": "MAH-khen",
+    "example": "Lara macht eine Präsentation. — Lara makes a presentation."
+  },
+  {
+    "word": "die Präsentation",
+    "type": "noun",
+    "category": "appointments",
+    "plural": "Plural: die Präsentationen",
+    "meaning": "presentation",
+    "ipa": "/diː pʁɛzɛntaˈt͡si̯oːn/",
+    "sound": "dee preh-zen-tah-TSYOHN",
+    "example": "Lara macht heute eine Präsentation. — Lara gives a presentation today."
+  },
+  {
+    "word": "frühstücken",
+    "type": "verb",
+    "category": "routine",
+    "meaning": "to have breakfast",
+    "ipa": "/ˈfʁyːʃtʏkn̩/",
+    "sound": "FRUE-shtuek-en",
+    "example": "Wir frühstücken um acht Uhr. — We have breakfast at eight o’clock."
+  },
+  {
+    "word": "einkaufen",
+    "type": "verb",
+    "category": "routine",
+    "meaning": "to shop",
+    "ipa": "/ˈaɪ̯nkaʊ̯fn̩/",
+    "sound": "INE-kow-fen",
+    "example": "Lara kauft am Nachmittag ein. — Lara shops in the afternoon."
+  },
+  {
+    "word": "spazieren gehen",
+    "type": "verb",
+    "category": "leisure",
+    "meaning": "to go for a walk",
+    "ipa": "/ʃpaˈt͡siːʁən ˌɡeːən/",
+    "sound": "shpah-TSEER-en gay-en",
+    "example": "Am Abend gehen wir spazieren. — In the evening we go for a walk."
+  },
+  {
+    "word": "aufräumen",
+    "type": "verb",
+    "category": "routine",
+    "meaning": "to tidy up",
+    "ipa": "/ˈaʊ̯fʁɔɪ̯mən/",
+    "sound": "OWF-roy-men",
+    "example": "Lara räumt die Küche auf. — Lara tidies the kitchen."
+  },
+  {
+    "word": "aufstehen",
+    "type": "verb",
+    "category": "routine",
+    "meaning": "to get up",
+    "ipa": "/ˈaʊ̯fʃteːən/",
+    "sound": "OWF-shtay-en",
+    "example": "Lara steht um Viertel nach sieben auf. — Lara gets up at quarter past seven."
+  },
+  {
+    "word": "gehen",
+    "type": "verb",
+    "category": "routine",
+    "meaning": "to go / walk",
+    "ipa": "/ˈɡeːən/",
+    "sound": "GAY-en",
+    "example": "Lara geht zum Deutschkurs. — Lara goes to the German course."
+  },
+  {
+    "word": "oder",
+    "type": "other",
+    "category": "useful",
+    "meaning": "or",
+    "ipa": "/ˈoːdɐ/",
+    "sound": "OH-der",
+    "example": "Gehst du ins Kino oder ins Museum? — Are you going to the cinema or the museum?"
+  },
+  {
+    "word": "arbeiten",
+    "type": "verb",
+    "category": "routine",
+    "meaning": "to work",
+    "ipa": "/ˈaʁbaɪ̯tn̩/",
+    "sound": "AR-bye-ten",
+    "example": "Sofia arbeitet bis zum Abend. — Sofia works until the evening."
+  },
+  {
+    "word": "müde",
+    "type": "adjective",
+    "category": "routine",
+    "meaning": "tired",
+    "ipa": "/ˈmyːdə/",
+    "sound": "MUE-duh",
+    "example": "Am Abend bin ich müde. — In the evening I am tired."
+  },
+  {
+    "word": "anrufen",
+    "type": "verb",
+    "category": "appointments",
+    "meaning": "to call / phone",
+    "ipa": "/ˈanʁuːfn̩/",
+    "sound": "AHN-roo-fen",
+    "example": "Lara ruft ihre Familie an. — Lara calls her family."
+  },
+  {
+    "word": "früh",
+    "type": "adjective",
+    "category": "time",
+    "meaning": "early",
+    "ipa": "/fʁyː/",
+    "sound": "frue",
+    "example": "Lara steht früh auf. — Lara gets up early."
+  },
+  {
+    "word": "der Supermarkt",
+    "type": "noun",
+    "category": "public",
+    "plural": "Plural: die Supermärkte",
+    "meaning": "supermarket",
+    "ipa": "/deːɐ̯ ˈzuːpɐmaʁkt/",
+    "sound": "dair ZOO-per-markt",
+    "example": "Sie kauft im Supermarkt ein. — She shops at the supermarket."
+  },
+  {
+    "word": "fernsehen",
+    "type": "verb",
+    "category": "leisure",
+    "meaning": "to watch television",
+    "ipa": "/ˈfɛʁnzeːən/",
+    "sound": "FAIRN-zay-en",
+    "example": "Am Abend sieht Lara fern. — Lara watches television in the evening."
+  },
+  {
+    "word": "mit",
+    "type": "other",
+    "category": "useful",
+    "meaning": "with",
+    "ipa": "/mɪt/",
+    "sound": "mitt",
+    "example": "Sie spielt mit Lili. — She plays with Lili."
+  },
+  {
+    "word": "spielen",
+    "type": "verb",
+    "category": "leisure",
+    "meaning": "to play",
+    "ipa": "/ˈʃpiːlən/",
+    "sound": "SHPEE-len",
+    "example": "Tim spielt am Dienstag Fußball. — Tim plays football on Tuesday."
+  },
+  {
+    "word": "spät",
+    "type": "adjective",
+    "category": "time",
+    "meaning": "late",
+    "ipa": "/ʃpɛːt/",
+    "sound": "shpait",
+    "example": "Wie spät ist es jetzt? — What time is it now?"
+  },
+  {
+    "word": "schon",
+    "type": "adverb",
+    "category": "time",
+    "meaning": "already",
+    "ipa": "/ʃoːn/",
+    "sound": "shohn",
+    "example": "Es ist schon zwölf Uhr. — It is already twelve o’clock."
+  },
+  {
+    "word": "erst",
+    "type": "adverb",
+    "category": "time",
+    "meaning": "only / not until",
+    "ipa": "/eːɐ̯st/",
+    "sound": "airst",
+    "example": "Es ist erst elf Uhr. — It is only eleven o’clock."
+  },
+  {
+    "word": "das Viertel",
+    "type": "noun",
+    "category": "time",
+    "plural": "Plural: die Viertel",
+    "meaning": "quarter",
+    "ipa": "/das ˈfɪʁtl̩/",
+    "sound": "dahs FEER-tel",
+    "example": "Es ist Viertel vor zwölf. — It is quarter to twelve."
+  },
+  {
+    "word": "vor",
+    "type": "other",
+    "category": "time",
+    "meaning": "before / to",
+    "ipa": "/foːɐ̯/",
+    "sound": "fohr",
+    "example": "Es ist Viertel vor zwölf. — It is quarter to twelve."
+  },
+  {
+    "word": "nach",
+    "type": "other",
+    "category": "time",
+    "meaning": "after / past",
+    "ipa": "/naːx/",
+    "sound": "nahkh",
+    "example": "Es ist Viertel nach eins. — It is quarter past one."
+  },
+  {
+    "word": "halb",
+    "type": "adjective",
+    "category": "time",
+    "meaning": "half",
+    "ipa": "/halp/",
+    "sound": "halp",
+    "example": "Es ist halb zwei. — It is half past one."
+  },
+  {
+    "word": "die Uhr",
+    "type": "noun",
+    "category": "time",
+    "plural": "Plural: die Uhren",
+    "meaning": "clock / watch; o’clock",
+    "ipa": "/diː uːɐ̯/",
+    "sound": "dee oor",
+    "example": "Das ist eine Uhr. — That is a clock."
+  },
+  {
+    "word": "zeichnen",
+    "type": "verb",
+    "category": "leisure",
+    "meaning": "to draw",
+    "ipa": "/ˈt͡saɪ̯çnən/",
+    "sound": "TSAI-khnen",
+    "example": "Zeichnen Sie die Uhrzeit. — Draw the time."
+  },
+  {
+    "word": "kurz",
+    "type": "adjective",
+    "category": "time",
+    "meaning": "short / shortly",
+    "ipa": "/kʊʁt͡s/",
+    "sound": "koorts",
+    "example": "Es ist kurz vor zwölf. — It is shortly before twelve."
+  },
+  {
+    "word": "gleich",
+    "type": "adverb",
+    "category": "time",
+    "meaning": "soon / right away",
+    "ipa": "/ɡlaɪ̯ç/",
+    "sound": "glykh",
+    "example": "Es ist gleich zwölf. — It will be twelve soon."
+  },
+  {
+    "word": "der Intensivkurs",
+    "type": "noun",
+    "category": "appointments",
+    "plural": "Plural: die Intensivkurse",
+    "meaning": "intensive course",
+    "ipa": "/deːɐ̯ ɪntɛnˈziːfˌkʊʁs/",
+    "sound": "dair in-ten-ZEEF-koors",
+    "example": "Der Intensivkurs beginnt am Montag. — The intensive course begins on Monday."
+  },
+  {
+    "word": "wann",
+    "type": "other",
+    "category": "time",
+    "meaning": "when",
+    "ipa": "/van/",
+    "sound": "vahn",
+    "example": "Wann beginnt der Kurs? — When does the course begin?"
+  },
+  {
+    "word": "am",
+    "type": "other",
+    "category": "time",
+    "meaning": "on / at the",
+    "ipa": "/am/",
+    "sound": "ahm",
+    "example": "Am Montag habe ich einen Kurs. — On Monday I have a course."
+  },
+  {
+    "word": "um",
+    "type": "other",
+    "category": "time",
+    "meaning": "at (a time)",
+    "ipa": "/ʊm/",
+    "sound": "oom",
+    "example": "Der Kurs beginnt um neun Uhr. — The course begins at nine o’clock."
+  },
+  {
+    "word": "von … bis …",
+    "speech": "von bis",
+    "type": "other",
+    "category": "time",
+    "meaning": "from … to …",
+    "ipa": "/fɔn … bɪs …/",
+    "sound": "fon … biss …",
+    "example": "Der Kurs ist von neun bis zwölf Uhr. — The course is from nine to twelve."
+  },
+  {
+    "word": "die Party",
+    "type": "noun",
+    "category": "leisure",
+    "plural": "Plural: die Partys",
+    "meaning": "party",
+    "ipa": "/diː ˈpaːɐ̯ti/",
+    "sound": "dee PAR-tee",
+    "example": "Ich mache am Freitag eine Party. — I am having a party on Friday."
+  },
+  {
+    "word": "die Zeit",
+    "type": "noun",
+    "category": "time",
+    "meaning": "time",
+    "ipa": "/diː t͡saɪ̯t/",
+    "sound": "dee tsyte",
+    "example": "Hast du am Freitag Zeit? — Do you have time on Friday?"
+  },
+  {
+    "word": "der Fußball",
+    "type": "noun",
+    "category": "leisure",
+    "meaning": "football / soccer",
+    "ipa": "/deːɐ̯ ˈfuːsbal/",
+    "sound": "dair FOOSS-bahl",
+    "example": "Wir spielen am Dienstag Fußball. — We play football on Tuesday."
+  },
+  {
+    "word": "anfangen",
+    "type": "verb",
+    "category": "appointments",
+    "meaning": "to begin / start",
+    "ipa": "/ˈanfaŋən/",
+    "sound": "AHN-fang-en",
+    "example": "Die Party fängt um acht Uhr an. — The party starts at eight o’clock."
+  },
+  {
+    "word": "passen",
+    "type": "verb",
+    "category": "appointments",
+    "meaning": "to suit / fit",
+    "ipa": "/ˈpasn̩/",
+    "sound": "PAH-sen",
+    "example": "Der Termin passt gut. — The appointment suits me well."
+  },
+  {
+    "word": "der Montag",
+    "type": "noun",
+    "category": "weekdays",
+    "plural": "Plural: die Montage",
+    "meaning": "Monday",
+    "ipa": "/deːɐ̯ ˈmoːntaːk/",
+    "sound": "dair MOHN-tahk",
+    "example": "Am Montag beginnt der Kurs. — The course begins on Monday."
+  },
+  {
+    "word": "der Dienstag",
+    "type": "noun",
+    "category": "weekdays",
+    "plural": "Plural: die Dienstage",
+    "meaning": "Tuesday",
+    "ipa": "/deːɐ̯ ˈdiːnstaːk/",
+    "sound": "dair DEENS-tahk",
+    "example": "Am Dienstag spielt Tim Fußball. — Tim plays football on Tuesday."
+  },
+  {
+    "word": "der Mittwoch",
+    "type": "noun",
+    "category": "weekdays",
+    "plural": "Plural: die Mittwoche",
+    "meaning": "Wednesday",
+    "ipa": "/deːɐ̯ ˈmɪtvɔx/",
+    "sound": "dair MIT-vokh",
+    "example": "Am Mittwoch macht Tim Hausaufgaben. — Tim does homework on Wednesday."
+  },
+  {
+    "word": "der Donnerstag",
+    "type": "noun",
+    "category": "weekdays",
+    "plural": "Plural: die Donnerstage",
+    "meaning": "Thursday",
+    "ipa": "/deːɐ̯ ˈdɔnɐstaːk/",
+    "sound": "dair DON-er-stahk",
+    "example": "Am Donnerstag kauft Tim ein. — Tim shops on Thursday."
+  },
+  {
+    "word": "der Freitag",
+    "type": "noun",
+    "category": "weekdays",
+    "plural": "Plural: die Freitage",
+    "meaning": "Friday",
+    "ipa": "/deːɐ̯ ˈfʁaɪ̯taːk/",
+    "sound": "dair FRY-tahk",
+    "example": "Am Freitag habe ich Zeit. — I have time on Friday."
+  },
+  {
+    "word": "der Samstag",
+    "type": "noun",
+    "category": "weekdays",
+    "plural": "Plural: die Samstage",
+    "meaning": "Saturday",
+    "ipa": "/deːɐ̯ ˈzamstaːk/",
+    "sound": "dair ZAHMS-tahk",
+    "example": "Am Samstag kochen wir zusammen. — We cook together on Saturday."
+  },
+  {
+    "word": "der Sonnabend",
+    "type": "noun",
+    "category": "weekdays",
+    "plural": "Plural: die Sonnabende",
+    "meaning": "Saturday (regional)",
+    "ipa": "/deːɐ̯ ˈzɔnʔaːbn̩t/",
+    "sound": "dair ZON-ah-bent",
+    "example": "Am Sonnabend ist die Bibliothek geöffnet. — The library is open on Saturday."
+  },
+  {
+    "word": "der Sonntag",
+    "type": "noun",
+    "category": "weekdays",
+    "plural": "Plural: die Sonntage",
+    "meaning": "Sunday",
+    "ipa": "/deːɐ̯ ˈzɔntaːk/",
+    "sound": "dair ZON-tahk",
+    "example": "Am Sonntag schläft Tim lange. — Tim sleeps late on Sunday."
+  },
+  {
+    "word": "das Wochenende",
+    "type": "noun",
+    "category": "weekdays",
+    "plural": "Plural: die Wochenenden",
+    "meaning": "weekend",
+    "ipa": "/das ˈvɔxn̩ˌʔɛndə/",
+    "sound": "dahs VOKH-en-en-duh",
+    "example": "Am Wochenende arbeitet die Familie nicht. — The family does not work at the weekend."
+  },
+  {
+    "word": "die Mama",
+    "type": "noun",
+    "category": "routine",
+    "plural": "Plural: die Mamas",
+    "meaning": "mum / mom",
+    "ipa": "/diː ˈmama/",
+    "sound": "dee MAH-mah",
+    "example": "Tim ruft seine Mama an. — Tim calls his mum."
+  },
+  {
+    "word": "schlafen",
+    "type": "verb",
+    "category": "routine",
+    "meaning": "to sleep",
+    "ipa": "/ˈʃlaːfn̩/",
+    "sound": "SHLAH-fen",
+    "example": "Tim schläft am Sonntag lange. — Tim sleeps late on Sunday."
+  },
+  {
+    "word": "der Termin",
+    "type": "noun",
+    "category": "appointments",
+    "plural": "Plural: die Termine",
+    "meaning": "appointment",
+    "ipa": "/deːɐ̯ tɛʁˈmiːn/",
+    "sound": "dair tair-MEEN",
+    "example": "Ich habe nächste Woche einen Termin. — I have an appointment next week."
+  },
+  {
+    "word": "der Terminkalender",
+    "type": "noun",
+    "category": "appointments",
+    "plural": "Plural: die Terminkalender",
+    "meaning": "appointment calendar",
+    "ipa": "/deːɐ̯ tɛʁˈmiːnkaˌlɛndɐ/",
+    "sound": "dair tair-MEEN-kah-len-der",
+    "example": "Schreiben Sie den Termin in den Terminkalender. — Write the appointment in the calendar."
+  },
+  {
+    "word": "nächst-",
+    "speech": "nächste",
+    "type": "adjective",
+    "category": "appointments",
+    "meaning": "next",
+    "ipa": "/nɛːçst/",
+    "sound": "naikhst",
+    "example": "Nächste Woche habe ich einen Termin. — Next week I have an appointment."
+  },
+  {
+    "word": "die Woche",
+    "type": "noun",
+    "category": "appointments",
+    "plural": "Plural: die Wochen",
+    "meaning": "week",
+    "ipa": "/diː ˈvɔxə/",
+    "sound": "dee VOKH-uh",
+    "example": "Der Terminkalender ist für nächste Woche. — The calendar is for next week."
+  },
+  {
+    "word": "der Morgen",
+    "type": "noun",
+    "category": "time",
+    "plural": "Plural: die Morgen",
+    "meaning": "morning",
+    "ipa": "/deːɐ̯ ˈmɔʁɡn̩/",
+    "sound": "dair MOR-gen",
+    "example": "Am Morgen frühstückt Robert. — Robert has breakfast in the morning."
+  },
+  {
+    "word": "der Vormittag",
+    "type": "noun",
+    "category": "time",
+    "plural": "Plural: die Vormittage",
+    "meaning": "late morning / morning",
+    "ipa": "/deːɐ̯ ˈfoːɐ̯mɪtaːk/",
+    "sound": "dair FOR-mit-tahk",
+    "example": "Am Vormittag räumt er auf. — He tidies up in the morning."
+  },
+  {
+    "word": "der Mittag",
+    "type": "noun",
+    "category": "time",
+    "plural": "Plural: die Mittage",
+    "meaning": "midday / noon",
+    "ipa": "/deːɐ̯ ˈmɪtaːk/",
+    "sound": "dair MIT-tahk",
+    "example": "Am Mittag isst er mit Nina. — He eats with Nina at noon."
+  },
+  {
+    "word": "der Nachmittag",
+    "type": "noun",
+    "category": "time",
+    "plural": "Plural: die Nachmittage",
+    "meaning": "afternoon",
+    "ipa": "/deːɐ̯ ˈnaːxmɪtaːk/",
+    "sound": "dair NAHKH-mit-tahk",
+    "example": "Am Nachmittag macht er Sport. — He exercises in the afternoon."
+  },
+  {
+    "word": "der Abend",
+    "type": "noun",
+    "category": "time",
+    "plural": "Plural: die Abende",
+    "meaning": "evening",
+    "ipa": "/deːɐ̯ ˈaːbn̩t/",
+    "sound": "dair AH-bent",
+    "example": "Am Abend spielt er Fußball. — He plays football in the evening."
+  },
+  {
+    "word": "die Nacht",
+    "type": "noun",
+    "category": "time",
+    "plural": "Plural: die Nächte",
+    "meaning": "night",
+    "ipa": "/diː naxt/",
+    "sound": "dee nahkht",
+    "example": "In der Nacht geht Robert spazieren. — Robert goes for a walk at night."
+  },
+  {
+    "word": "das Kino",
+    "type": "noun",
+    "category": "leisure",
+    "plural": "Plural: die Kinos",
+    "meaning": "cinema",
+    "ipa": "/das ˈkiːno/",
+    "sound": "dahs KEE-noh",
+    "example": "Am Abend geht Robert ins Kino. — Robert goes to the cinema in the evening."
+  },
+  {
+    "word": "chatten",
+    "type": "verb",
+    "category": "leisure",
+    "meaning": "to chat online",
+    "ipa": "/ˈt͡ʃɛtn̩/",
+    "sound": "CHET-en",
+    "example": "In der Nacht chattet Robert. — Robert chats online at night."
+  },
+  {
+    "word": "hören",
+    "type": "verb",
+    "category": "leisure",
+    "meaning": "to hear / listen",
+    "ipa": "/ˈhøːʁən/",
+    "sound": "HUH-ren",
+    "example": "Ich höre jeden Morgen Musik. — I listen to music every morning."
+  },
+  {
+    "word": "raten",
+    "type": "verb",
+    "category": "useful",
+    "meaning": "to guess",
+    "ipa": "/ˈʁaːtn̩/",
+    "sound": "RAH-ten",
+    "example": "Die anderen raten die Aktivität. — The others guess the activity."
+  },
+  {
+    "word": "jeder (jedes, jede)",
+    "speech": "jeder, jedes, jede",
+    "type": "other",
+    "category": "useful",
+    "meaning": "every / each",
+    "ipa": "/ˈjeːdɐ, ˈjeːdəs, ˈjeːdə/",
+    "sound": "YAY-der, YAY-des, YAY-duh",
+    "example": "Ich stehe jeden Morgen um sechs Uhr auf. — I get up at six every morning."
+  },
+  {
+    "word": "das Café",
+    "type": "noun",
+    "category": "public",
+    "plural": "Plural: die Cafés",
+    "meaning": "café",
+    "ipa": "/das kaˈfeː/",
+    "sound": "dahs kah-FAY",
+    "example": "Das Café öffnet täglich um acht Uhr. — The café opens daily at eight."
+  },
+  {
+    "word": "täglich",
+    "type": "adverb",
+    "category": "routine",
+    "meaning": "daily / every day",
+    "ipa": "/ˈtɛːklɪç/",
+    "sound": "TAIK-likh",
+    "example": "Das Café ist täglich geöffnet. — The café is open daily."
+  },
+  {
+    "word": "das Fahrrad",
+    "type": "noun",
+    "category": "leisure",
+    "plural": "Plural: die Fahrräder",
+    "meaning": "bicycle",
+    "ipa": "/das ˈfaːɐ̯ʁaːt/",
+    "sound": "dahs FAHR-raht",
+    "example": "Ich fahre mit dem Fahrrad durch Berlin. — I cycle through Berlin."
+  },
+  {
+    "word": "die Bibliothek",
+    "type": "noun",
+    "category": "public",
+    "plural": "Plural: die Bibliotheken",
+    "meaning": "library",
+    "ipa": "/diː bibli̯oˈteːk/",
+    "sound": "dee bee-blee-oh-TAIK",
+    "example": "Die Bibliothek öffnet am Montag. — The library opens on Monday."
+  },
+  {
+    "word": "der Feiertag",
+    "type": "noun",
+    "category": "weekdays",
+    "plural": "Plural: die Feiertage",
+    "meaning": "public holiday",
+    "ipa": "/deːɐ̯ ˈfaɪ̯ɐtaːk/",
+    "sound": "dair FY-er-tahk",
+    "example": "An Feiertagen ist die Bibliothek geschlossen. — The library is closed on public holidays."
+  },
+  {
+    "word": "geschlossen",
+    "type": "adjective",
+    "category": "public",
+    "meaning": "closed",
+    "ipa": "/ɡəˈʃlɔsn̩/",
+    "sound": "guh-SHLOS-en",
+    "example": "Am Sonntag ist das Kaufhaus geschlossen. — The department store is closed on Sunday."
+  },
+  {
+    "word": "die Ansage",
+    "type": "noun",
+    "category": "public",
+    "plural": "Plural: die Ansagen",
+    "meaning": "announcement / recorded message",
+    "ipa": "/diː ˈanˌzaːɡə/",
+    "sound": "dee AHN-zah-guh",
+    "example": "Hören Sie die Ansage. — Listen to the announcement."
+  },
+  {
+    "word": "offiziell",
+    "type": "adjective",
+    "category": "public",
+    "meaning": "official",
+    "ipa": "/ɔfit͡si̯ˈɛl/",
+    "sound": "oh-fit-see-ELL",
+    "example": "Das ist die offizielle Ansage. — That is the official announcement."
+  },
+  {
+    "word": "der Film",
+    "type": "noun",
+    "category": "leisure",
+    "plural": "Plural: die Filme",
+    "meaning": "film / movie",
+    "ipa": "/deːɐ̯ fɪlm/",
+    "sound": "dair film",
+    "example": "Welchen Film sieht Herr Tanaka? — Which film is Mr Tanaka watching?"
+  },
+  {
+    "word": "sehen",
+    "type": "verb",
+    "category": "leisure",
+    "meaning": "to see / watch",
+    "ipa": "/ˈzeːən/",
+    "sound": "ZAY-en",
+    "example": "Wir sehen heute einen Film. — We are watching a film today."
+  },
+  {
+    "word": "das Museum",
+    "type": "noun",
+    "category": "public",
+    "plural": "Plural: die Museen",
+    "meaning": "museum",
+    "ipa": "/das muˈzeːʊm/",
+    "sound": "dahs moo-ZAY-oom",
+    "example": "Herr Tanaka geht gern ins Museum. — Mr Tanaka likes going to the museum."
+  },
+  {
+    "word": "geöffnet",
+    "type": "adjective",
+    "category": "public",
+    "meaning": "open",
+    "ipa": "/ɡəˈʔœfnət/",
+    "sound": "guh-UHF-net",
+    "example": "Wann ist das Museum geöffnet? — When is the museum open?"
+  },
+  {
+    "word": "das Schiff",
+    "type": "noun",
+    "category": "leisure",
+    "plural": "Plural: die Schiffe",
+    "meaning": "ship / boat",
+    "ipa": "/das ʃɪf/",
+    "sound": "dahs shiff",
+    "example": "Am Nachmittag fährt das Schiff. — The ship departs in the afternoon."
+  },
+  {
+    "word": "die Tour",
+    "type": "noun",
+    "category": "leisure",
+    "plural": "Plural: die Touren",
+    "meaning": "tour / trip",
+    "ipa": "/diː tuːɐ̯/",
+    "sound": "dee toor",
+    "example": "Er macht eine Tour mit dem Schiff. — He takes a tour by boat."
+  },
+  {
+    "word": "das Kaufhaus",
+    "type": "noun",
+    "category": "public",
+    "plural": "Plural: die Kaufhäuser",
+    "meaning": "department store",
+    "ipa": "/das ˈkaʊ̯fˌhaʊ̯s/",
+    "sound": "dahs KOWF-house",
+    "example": "Das Kaufhaus ist sehr groß. — The department store is very large."
+  },
+  {
+    "word": "das Europa",
+    "type": "noun",
+    "category": "public",
+    "meaning": "Europe",
+    "ipa": "/das ɔɪ̯ˈʁoːpa/",
+    "sound": "dahs oy-ROH-pah",
+    "example": "Das ist das größte Kaufhaus in Europa. — This is the largest department store in Europe."
+  },
+  {
+    "word": "der Moment",
+    "type": "noun",
+    "category": "time",
+    "plural": "Plural: die Momente",
+    "meaning": "moment",
+    "ipa": "/deːɐ̯ moˈmɛnt/",
+    "sound": "dair moh-MENT",
+    "example": "Die Reichstagskuppel ist im Moment geschlossen. — The Reichstag dome is closed at the moment."
+  },
+  {
+    "word": "kennenlernen (sich)",
+    "speech": "sich kennenlernen",
+    "type": "verb",
+    "category": "useful",
+    "meaning": "to get to know (each other)",
+    "ipa": "/ˈkɛnənˌlɛʁnən/",
+    "sound": "KEN-en-lair-nen",
+    "example": "Im Kurs lernen wir uns kennen. — We get to know each other in the course."
+  },
+  {
+    "word": "die Abfahrt",
+    "type": "noun",
+    "category": "appointments",
+    "plural": "Plural: die Abfahrten",
+    "meaning": "departure",
+    "ipa": "/diː ˈapˌfaːɐ̯t/",
+    "sound": "dee AHP-fahrt",
+    "example": "Die Abfahrt ist um zehn Uhr dreißig. — The departure is at ten thirty."
+  },
+  {
+    "word": "der Erwachsene",
+    "type": "noun",
+    "category": "public",
+    "plural": "Plural: die Erwachsenen",
+    "meaning": "adult",
+    "ipa": "/deːɐ̯ ɛɐ̯ˈvaksənə/",
+    "sound": "dair air-VAHK-se-nuh",
+    "example": "Für Erwachsene kostet die Tour acht Euro. — The tour costs eight euros for adults."
+  },
+  {
+    "word": "der Plan",
+    "type": "noun",
+    "category": "appointments",
+    "plural": "Plural: die Pläne",
+    "meaning": "plan",
+    "ipa": "/deːɐ̯ plaːn/",
+    "sound": "dair plahn",
+    "example": "Machen Sie einen Plan für die Woche. — Make a plan for the week."
+  }
+];
+  const categories = {
+  "all": {
+    "label": "All words",
+    "icon": "✦",
+    "copy": "Study the complete Lektion 5 vocabulary list."
+  },
+  "routine": {
+    "label": "Daily routines",
+    "icon": "☀️",
+    "copy": "Breakfast, work, chores, sleep, and everyday actions."
+  },
+  "time": {
+    "label": "Time & clock",
+    "icon": "🕘",
+    "copy": "Clock times, parts of the day, and useful time phrases."
+  },
+  "weekdays": {
+    "label": "Weekdays",
+    "icon": "📅",
+    "copy": "Days of the week, weekends, and public holidays."
+  },
+  "appointments": {
+    "label": "Appointments",
+    "icon": "🗓️",
+    "copy": "Courses, appointments, calendars, departures, and plans."
+  },
+  "leisure": {
+    "label": "Free time",
+    "icon": "⚽",
+    "copy": "Sport, films, outings, music, and other activities."
+  },
+  "public": {
+    "label": "Places & notices",
+    "icon": "🏛️",
+    "copy": "Public places, opening times, announcements, and travel."
+  },
+  "useful": {
+    "label": "Useful words",
+    "icon": "💬",
+    "copy": "Connectors, question words, and phrases for natural sentences."
+  }
+};
+  const activeLesson = { id: "lektion-5", title: "Lektion 5", level: "A1", words };
+  let activeCategory = "all";
+  let order = words.map((_, index) => index);
+  let position = 0;
+  let revealed = false;
+  const storageKey = "german-" + activeLesson.id + "-progress";
+  let status = loadProgress();
+  const quizState = { current: -1, correct: 0, tried: 0, answered: false };
+  const sentenceState = { current: order[0], correct: 0, tried: 0, answered: false, tokens: [], tileOrder: [], selected: [] };
+  const $ = (id) => document.getElementById(id);
+
+  function loadProgress() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+      return saved && typeof saved === "object" ? saved : {};
+    } catch (_) { return {}; }
+  }
+
+  function saveProgress() {
+    try { localStorage.setItem(storageKey, JSON.stringify(status)); } catch (_) {}
+  }
+
+  function categoryIndices(key) {
+    return words.map((_, index) => index).filter(index => key === "all" || words[index].category === key);
+  }
+
+  function setCategory(key, shouldScroll = false) {
+    activeCategory = categories[key] ? key : "all";
+    order = categoryIndices(activeCategory);
+    position = 0;
+    sentenceState.current = order[0];
+    $("bankCategory").value = activeCategory;
+    renderCategoryPills();
+    render();
+    newQuizQuestion();
+    renderSentence();
+    buildWordBank();
+    if (shouldScroll) document.querySelector(".study-panel").scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function renderCategoryPills() {
+    const holder = $("categoryPills");
+    holder.innerHTML = "";
+    Object.entries(categories).forEach(([key, meta]) => {
+      const button = document.createElement("button");
+      const count = categoryIndices(key).length;
+      button.type = "button";
+      button.className = "category-pill" + (key === activeCategory ? " active" : "");
+      button.setAttribute("aria-pressed", String(key === activeCategory));
+      button.innerHTML = '<span class="category-icon" aria-hidden="true">' + meta.icon + '</span><span><span class="category-label">' + meta.label + '</span><span class="category-total">' + count + ' words</span></span>';
+      button.addEventListener("click", () => setCategory(key, true));
+      holder.appendChild(button);
+    });
+    const meta = categories[activeCategory];
+    $("categoryFocusIcon").textContent = meta.icon;
+    $("categoryFocusLabel").textContent = meta.label + " · " + order.length + " words";
+    $("categoryFocusCopy").textContent = meta.copy;
+    $("categoryReset").hidden = activeCategory === "all";
+  }
+
+  function render() {
+    const item = words[order[position]];
+    $("counter").textContent = "WORD " + String(position + 1).padStart(3, "0") + " / " + order.length;
+    $("wordType").textContent = item.type;
+    $("wordCategory").textContent = categories[item.category].icon + " " + categories[item.category].label;
+    $("word").textContent = item.word;
+    $("pluralText").textContent = item.plural || "";
+    $("pluralListenBtn").hidden = !item.plural;
+    $("ipa").textContent = item.ipa;
+    $("sound").textContent = item.sound;
+    revealed = false;
+    $("answer").hidden = true;
+    $("answer").className = "answer";
+    $("answer").innerHTML = "";
+    $("answerReveal").hidden = false;
+    $("answerReveal").setAttribute("aria-expanded", "false");
+    $("answerReveal").textContent = "Tap to reveal the meaning and sentence";
+    updateProgress();
+  }
+
+  function reveal() {
+    const item = words[order[position]];
+    revealed = true;
+    $("answerReveal").setAttribute("aria-expanded", "true");
+    $("answerReveal").textContent = "Hide meaning and sentence";
+    $("answer").hidden = false;
+    $("answer").className = "answer";
+    $("answer").innerHTML = '<p class="meaning">' + item.meaning + '</p><p class="usage-label">How to use it</p><p class="example">' + item.example + '</p><button class="example-listen" id="exampleListenBtn" type="button"><span aria-hidden="true">🔊</span> Hear example</button>';
+    $("exampleListenBtn").addEventListener("click", event => {
+      event.stopPropagation();
+      speak(item.example.split(" — ")[0], $("exampleListenBtn"));
+    });
+  }
+
+  function move(step) {
+    position = (position + step + order.length) % order.length;
+    render();
+  }
+
+  function mark(value) {
+    status[order[position]] = value;
+    saveProgress();
+    move(1);
+  }
+
+  function updateProgress() {
+    const checked = order.filter(index => status[index]).length;
+    const learned = order.filter(index => status[index] === "know").length;
+    const review = order.filter(index => status[index] === "review").length;
+    $("learnedStat").textContent = learned;
+    $("reviewStat").textContent = review;
+    $("progressText").textContent = checked + " of " + order.length + " checked";
+    $("progressFill").style.width = (checked / order.length * 100) + "%";
+  }
+
+  function speak(text, button) {
+    if (!("speechSynthesis" in window)) {
+      alert("Audio pronunciation is not supported in this browser.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "de-DE";
+    utterance.rate = .72;
+    const voices = window.speechSynthesis.getVoices();
+    const german = voices.find(v => v.lang.toLowerCase() === "de-de") || voices.find(v => v.lang.toLowerCase().startsWith("de"));
+    if (german) utterance.voice = german;
+    utterance.onstart = () => button && button.classList.add("speaking");
+    utterance.onend = utterance.onerror = () => button && button.classList.remove("speaking");
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function speakGerman() {
+    const item = words[order[position]];
+    speak(item.speech || item.word, $("listenBtn"));
+  }
+
+  function speakPlural() {
+    const plural = words[order[position]].plural;
+    if (plural) speak(plural.replace(/^Plural:\s*/, ""), $("pluralListenBtn"));
+  }
+
+  function shuffled(items) {
+    const copy = [...items];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function newQuizQuestion() {
+    let next = order[Math.floor(Math.random() * order.length)];
+    if (order.length > 1 && next === quizState.current) {
+      const currentPosition = order.indexOf(next);
+      next = order[(currentPosition + 1) % order.length];
+    }
+    quizState.current = next;
+    quizState.answered = false;
+    const item = words[next];
+    $("quizWord").textContent = item.word;
+    $("quizPronunciation").textContent = categories[item.category].label + " · " + item.ipa + " · " + item.sound;
+    $("quizFeedback").textContent = "";
+    $("nextQuizBtn").hidden = true;
+    const distractors = shuffled(words.map((_, index) => index).filter(index => index !== next)).slice(0, 3);
+    const options = shuffled([next, ...distractors]);
+    $("quizOptions").innerHTML = "";
+    options.forEach(index => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "quiz-option";
+      button.textContent = words[index].meaning;
+      button.addEventListener("click", () => answerQuiz(index, button));
+      $("quizOptions").appendChild(button);
+    });
+  }
+
+  function answerQuiz(index, selectedButton) {
+    if (quizState.answered) return;
+    quizState.answered = true;
+    quizState.tried += 1;
+    const correct = index === quizState.current;
+    if (correct) quizState.correct += 1;
+    [...$("quizOptions").querySelectorAll("button")].forEach(button => {
+      button.disabled = true;
+      if (button.textContent === words[quizState.current].meaning) button.classList.add("correct");
+    });
+    if (!correct) selectedButton.classList.add("wrong");
+    $("quizFeedback").textContent = correct ? "Correct — gut gemacht!" : "The answer is “" + words[quizState.current].meaning + ".”";
+    $("quizScore").textContent = quizState.correct + " correct · " + quizState.tried + " tried";
+    $("nextQuizBtn").hidden = false;
+  }
+
+  function sentenceParts(item) {
+    const parts = item.example.split(" — ");
+    return { german: parts[0], english: parts.slice(1).join(" — ") || item.meaning };
+  }
+
+  function renderSentence() {
+    const item = words[sentenceState.current];
+    const parts = sentenceParts(item);
+    sentenceState.answered = false;
+    sentenceState.tokens = parts.german.split(/\s+/).map((text, id) => ({ id, text }));
+    sentenceState.tileOrder = shuffled(sentenceState.tokens.map(token => token.id));
+    sentenceState.selected = [];
+    const categoryPosition = order.indexOf(sentenceState.current);
+    $("sentenceMeta").textContent = "Sentence " + String(categoryPosition + 1).padStart(3, "0") + " / " + order.length + " · " + categories[item.category].label;
+    $("sentenceWord").textContent = item.word;
+    $("sentenceEnglish").textContent = parts.english;
+    $("sentenceFeedback").className = "sentence-feedback";
+    $("sentenceFeedback").textContent = "";
+    $("sentenceNextBtn").hidden = true;
+    $("sentenceCheckBtn").hidden = false;
+    $("sentenceShowBtn").hidden = false;
+    $("sentenceClearBtn").hidden = false;
+    renderSentenceTiles();
+  }
+
+  function renderSentenceTiles() {
+    const answer = $("sentenceAnswer");
+    const tiles = $("sentenceTiles");
+    answer.className = "sentence-answer" + (sentenceState.answered ? " correct" : "");
+    answer.innerHTML = "";
+    tiles.innerHTML = "";
+    if (!sentenceState.selected.length) answer.innerHTML = '<span class="sentence-placeholder">Your sentence will appear here</span>';
+    else sentenceState.selected.forEach(id => answer.appendChild(makeSentenceTile(id, true)));
+    sentenceState.tileOrder.filter(id => !sentenceState.selected.includes(id)).forEach(id => tiles.appendChild(makeSentenceTile(id, false)));
+  }
+
+  function makeSentenceTile(id, selected) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "word-tile";
+    button.textContent = sentenceState.tokens[id].text;
+    button.disabled = sentenceState.answered;
+    button.setAttribute("aria-label", selected ? "Remove " + button.textContent : "Add " + button.textContent);
+    button.addEventListener("click", () => {
+      if (sentenceState.answered) return;
+      if (selected) sentenceState.selected = sentenceState.selected.filter(tokenId => tokenId !== id);
+      else sentenceState.selected.push(id);
+      $("sentenceAnswer").className = "sentence-answer";
+      $("sentenceFeedback").className = "sentence-feedback";
+      $("sentenceFeedback").textContent = "";
+      renderSentenceTiles();
+    });
+    return button;
+  }
+
+  function checkSentence() {
+    if (!sentenceState.selected.length) {
+      $("sentenceFeedback").className = "sentence-feedback wrong";
+      $("sentenceFeedback").textContent = "Choose some words first.";
+      return;
+    }
+    sentenceState.tried += 1;
+    const correct = sentenceState.selected.length === sentenceState.tokens.length && sentenceState.selected.every((id, index) => id === index);
+    if (!correct) {
+      $("sentenceScore").textContent = sentenceState.correct + " correct · " + sentenceState.tried + " tried";
+      $("sentenceAnswer").className = "sentence-answer wrong";
+      $("sentenceFeedback").className = "sentence-feedback wrong";
+      $("sentenceFeedback").textContent = "Not quite. Check the word order and try again.";
+      return;
+    }
+    sentenceState.correct += 1;
+    sentenceState.answered = true;
+    $("sentenceScore").textContent = sentenceState.correct + " correct · " + sentenceState.tried + " tried";
+    $("sentenceFeedback").className = "sentence-feedback correct";
+    $("sentenceFeedback").textContent = "Correct — sehr gut! Listen once, then continue.";
+    $("sentenceCheckBtn").hidden = true;
+    $("sentenceShowBtn").hidden = true;
+    $("sentenceClearBtn").hidden = true;
+    $("sentenceNextBtn").hidden = false;
+    renderSentenceTiles();
+  }
+
+  function showSentenceAnswer() {
+    sentenceState.selected = sentenceState.tokens.map(token => token.id);
+    $("sentenceAnswer").className = "sentence-answer";
+    $("sentenceFeedback").className = "sentence-feedback";
+    $("sentenceFeedback").textContent = "Answer shown — listen and repeat it, then try checking it.";
+    renderSentenceTiles();
+  }
+
+  function moveSentence(step) {
+    const currentPosition = order.indexOf(sentenceState.current);
+    sentenceState.current = order[(currentPosition + step + order.length) % order.length];
+    renderSentence();
+  }
+
+  function listenSentence() {
+    speak(sentenceParts(words[sentenceState.current]).german, $("sentenceListenBtn"));
+  }
+
+  function buildWordBank() {
+    const grid = $("bankGrid");
+    const query = $("bankSearch").value.trim().toLocaleLowerCase("de-DE");
+    const filter = $("bankFilter").value;
+    const matches = words.map((item, index) => ({ item, index })).filter(({ item }) => {
+      const matchesCategory = activeCategory === "all" || item.category === activeCategory;
+      const matchesText = !query || [item.word, item.meaning, item.plural || ""].some(value => value.toLocaleLowerCase("de-DE").includes(query));
+      const matchesType = filter === "all" || item.type === filter || (filter === "other" && item.type !== "noun" && item.type !== "verb");
+      return matchesCategory && matchesText && matchesType;
+    });
+    grid.innerHTML = "";
+    if (!matches.length) {
+      grid.innerHTML = '<p class="bank-empty">No matching words found. Try another search or category.</p>';
+      return;
+    }
+    matches.forEach(({ item, index }) => {
+      const card = document.createElement("article");
+      card.className = "bank-card";
+      card.innerHTML = '<span class="bank-number">' + String(index + 1).padStart(3, "0") + '</span><div><h3 class="bank-word" lang="de">' + item.word + '</h3><p class="bank-meaning">' + item.meaning + '</p><span class="bank-category-label">' + categories[item.category].icon + ' ' + categories[item.category].label + '</span>' + (item.plural ? '<span class="bank-plural-row"><span class="bank-plural">' + item.plural + '</span></span>' : '') + '<span class="bank-ipa">' + item.ipa + ' · ' + item.sound + '</span></div>';
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "bank-listen";
+      button.setAttribute("aria-label", "Listen to " + item.word);
+      button.title = "Hear word";
+      button.textContent = "🔊";
+      button.addEventListener("click", () => speak(item.speech || item.word, button));
+      card.appendChild(button);
+      if (item.plural) {
+        const pluralText = item.plural.replace(/^Plural:\s*/, "");
+        const pluralButton = document.createElement("button");
+        pluralButton.type = "button";
+        pluralButton.className = "bank-plural-listen";
+        pluralButton.setAttribute("aria-label", "Listen to plural " + pluralText);
+        pluralButton.textContent = "🔊 Plural";
+        pluralButton.addEventListener("click", () => speak(pluralText, pluralButton));
+        card.querySelector(".bank-plural-row").appendChild(pluralButton);
+      }
+      grid.appendChild(card);
+    });
+  }
+
+  $("answerReveal").addEventListener("click", () => {
+    if (!revealed) { reveal(); return; }
+    revealed = false;
+    $("answer").hidden = true;
+    $("answerReveal").setAttribute("aria-expanded", "false");
+    $("answerReveal").textContent = "Tap to reveal the meaning and sentence";
+  });
+  $("listenBtn").addEventListener("click", speakGerman);
+  $("pluralListenBtn").addEventListener("click", speakPlural);
+  $("reviewBtn").addEventListener("click", () => mark("review"));
+  $("knowBtn").addEventListener("click", () => mark("know"));
+  $("resetBtn").addEventListener("click", () => {
+    if (!confirm("Reset your saved lesson progress?")) return;
+    status = {};
+    saveProgress();
+    render();
+  });
+  $("categoryReset").addEventListener("click", () => setCategory("all"));
+  $("quizListenBtn").addEventListener("click", () => {
+    const item = words[quizState.current];
+    speak(item.speech || item.word, $("quizListenBtn"));
+  });
+  $("nextQuizBtn").addEventListener("click", newQuizQuestion);
+  $("sentenceListenBtn").addEventListener("click", listenSentence);
+  $("sentenceClearBtn").addEventListener("click", () => { sentenceState.selected = []; $("sentenceFeedback").textContent = ""; renderSentenceTiles(); });
+  $("sentenceShowBtn").addEventListener("click", showSentenceAnswer);
+  $("sentenceCheckBtn").addEventListener("click", checkSentence);
+  $("sentenceNextBtn").addEventListener("click", () => moveSentence(1));
+  $("bankSearch").addEventListener("input", buildWordBank);
+  $("bankFilter").addEventListener("change", buildWordBank);
+  $("bankCategory").addEventListener("change", event => setCategory(event.target.value));
+  $("shuffleBtn").addEventListener("click", () => { order = shuffled(order); position = 0; sentenceState.current = order[0]; render(); renderSentence(); });
+  document.addEventListener("keydown", event => {
+    if (["INPUT", "SELECT", "BUTTON"].includes(document.activeElement.tagName)) return;
+    if (event.key === " ") { event.preventDefault(); if (!revealed) reveal(); }
+    if (event.key === "ArrowRight") move(1);
+    if (event.key === "ArrowLeft") move(-1);
+  });
+  renderCategoryPills();
+  buildWordBank();
+  newQuizQuestion();
+  renderSentence();
+  render();
+})();
+  </script>
+</body>
+</html>
